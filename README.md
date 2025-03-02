@@ -2,7 +2,7 @@
 Project: Develop Simple Shell 
 Introduction
 This document describes how to develop a shell on Linux/macOS that supports:
-Builtin commands (e.g., pwd, cd, exit, set, unset, echo, help, history).
+Builtin commands (e.g., pwd, cd, exit_word, set, unset, echo, help, history).
 Shell variables for tasks like set, unset, echo, and variable expansion ($VAR).
 External command execution via process creation, searching directories in PATH or using direct pathnames.
 A history feature that stores and can display the last 500 commands the user entered.
@@ -16,7 +16,7 @@ Check if the first token is a builtin:
 If builtin, run it with internal logic.
 Otherwise, attempt to run as an external command by creating a child process (fork) and executing the command in that child.
 Before executing, store the user’s typed line into a history buffer for recall.
-Repeat until user issues exit or until an end-of-file condition is reached.
+Repeat until user issues exit_word or until an end-of-file condition is reached.
 
 2. Shell Variables
 2.1. Internal Key–Value Pairs
@@ -44,7 +44,7 @@ Changes the shell’s idea of the current directory. You can check if the path i
 Lists your shell’s available builtin commands and simple usage notes.
 3.7. history
 Displays previously entered commands. The shell internally stores up to 500 lines in a circular or ring buffer. By default, history can print all stored lines, or if history N is entered, print only the last N.
-3.8. exit
+3.8. exit_word
 Ends the main shell loop, typically returning control to the operating system.
 
 4. History Feature
