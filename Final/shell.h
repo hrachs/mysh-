@@ -31,6 +31,7 @@ void pwd();
 void cd(char* path);
 void exit_shell();
 void loop();
+void sig_handle(int signum);
 
 
 #endif
