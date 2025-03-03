@@ -4,6 +4,7 @@ int var_count = 0;
 variable_t variables[MAX_VARIABLES];
 
 void loop() {
+    signal(SIGINT, sig_handle);
     char command[MAX_COMMAND_LENGTH];
     char *args[MAX_ARGS];
 
