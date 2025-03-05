@@ -14,6 +14,8 @@ void exec(char * args[], char* command , int fd){
     } else {
         int status;
         waitpid(pid, &status, 0);
-        my_history(command, fd);
+        if (WIFEXITED(status) && WEXITSTATUS(status) == 0) {
+            my_history(command, fd);
+        }
     }
 }

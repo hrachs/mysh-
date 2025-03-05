@@ -17,13 +17,12 @@ void pwd() {
     }
 }
 
-
 void exit_shell() {
     for (int i = 0; i < var_count; i++) {
         free(variables[i].key);
         free(variables[i].value);
     }
-    remove("history.txt");
+    remove(get_history_file_path());
     exit(0);
 }
 

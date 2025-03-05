@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <signal.h>
+#include <pwd.h>
 
 #define MAX_VARIABLES 100
 #define MAX_COMMAND_LENGTH 100
@@ -37,5 +38,6 @@ int history_call();
 void exec(char * args[], char* command , int fd);
 void promt(char * command , char * args[]);
 int token(char * command, char * args[], int fd);
+char* get_history_file_path();
 
 #endif
