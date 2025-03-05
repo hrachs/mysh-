@@ -17,11 +17,13 @@ void pwd() {
     }
 }
 
-void exit_shell() {
+void exit_shell(char * command, char * args[]) {
     for (int i = 0; i < var_count; i++) {
         free(variables[i].key);
         free(variables[i].value);
     }
+    munmap(command, getpagesize());
+    free(args);
     remove(get_history_file_path());
     exit(0);
 }

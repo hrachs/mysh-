@@ -8,6 +8,14 @@ void promt(char *command, char *args[]) {
     }
     
     command[strcspn(command, "\n")] = '\0';
+    
+    // if (strlen(command) > 50){
+    //     printf("Command too long\n");
+    //     fflush(stdout);
+    //     command[0] = '\0';
+    //     exit(0);
+    // }
+    
 
     for (int i = 0; i < MAX_ARGS; i++) {
         args[i] = NULL;

@@ -9,11 +9,13 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <signal.h>
+#include <sys/mman.h>
 #include <pwd.h>
 
 #define MAX_VARIABLES 100
 #define MAX_COMMAND_LENGTH 100
-#define MAX_ARGS 10
+#define MAX_ARGS 100
+
 
 typedef struct {
     char *key;
@@ -22,6 +24,7 @@ typedef struct {
 
 extern int var_count;
 extern variable_t variables[MAX_VARIABLES];
+
 
 void set_variable(char* key, char* value);
 void unset_variable(char* key);

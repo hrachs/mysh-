@@ -4,9 +4,10 @@ int var_count = 0;
 variable_t variables[MAX_VARIABLES];
 
 void loop() {
+    int PAGESIZE = getpagesize();
     signal(SIGINT, sig_handle);
-    char command[MAX_COMMAND_LENGTH];
-    char *args[MAX_ARGS];
+    char * command = (char*)mmap(NULL, PAGESIZE, PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_SHARED, -1, 0);
+    char **args = (char**)malloc(MAX_ARGS * sizeof(char**));
 
     while (1) {
         int fd = history_call();
